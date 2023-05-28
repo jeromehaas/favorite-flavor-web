@@ -38,7 +38,7 @@
 	},
 
 	//WORKBENCH
-	"workbench.colorTheme": "Abyss",
+	"workbench.colorTheme": "Andromeda",
 
 	// VIM
 	"vim.vimrc.enable": true,

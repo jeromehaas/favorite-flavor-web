@@ -3,51 +3,7 @@ import "./cookie-banner.scss";
 ---
 
 <script src="./cookie-banner.js"></script>
-<!-- <script>
-    // IMPORTS
-    import gsap from "gsap";
 
-    // DEFINE ELEMENTS
-    const elements = {
-        cookieBanner: document.querySelector(".cookie-banner"),
-        buttons: {
-            recipe: document.querySelector(".buttons .button--dark"),
-            agree: document.querySelector(".buttons .button--light"),
-        },
-    };
-
-    // COOKIE CHECK
-    const cookieCheck = () => {
-        const cookie = localStorage.getItem("cookie");
-        if (!cookie) {
-            setTimeout(showCookieBanner, 1000);
-        }
-    };
-
-    // SHOW COOKIE-BANNER
-    const showCookieBanner = () => {
-        gsap.to(elements.cookieBanner, { bottom: "24px", duration: 2 });
-    };
-
-    // HIDE COOKIE-BANNER
-    const hideCookieBanner = () => {
-        gsap.to(elements.cookieBanner, { bottom: "-100vh", duration: 4 });
-        localStorage.setItem("cookie", "I'm just a happy cookie sitting comfy in your browser.");
-    };
-
-    // SHOW RECIPE
-    const showRecipe = () => {
-        localStorage.setItem("cookie", "I'm just a happy cookie sitting comfy in your browser.");
-        window.location.href = "/recipes/chocolate-chip-cookies";
-    };
-
-    // SETUP EVENT LISTENERS
-    elements.buttons.agree.addEventListener("click", hideCookieBanner);
-    elements.buttons.recipe.addEventListener("click", showRecipe);
-    window.addEventListener("DOMContentLoaded", () => {
-        cookieCheck();
-    });
-</script> -->
 <div class="cookie-banner">
     <h3 class="cookie-banner__title">Let's talk about cookies</h3>
     <p class="cookie-banner__text">We just collect our favorite recipes - we don’t need you to worry about cookies. But just in case, we have a marvellous recipe for choco-chip cookies.</p>

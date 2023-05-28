@@ -1,159 +1,55 @@
 ---
-import './recipe-detail.scss';
+import "./recipe-detail.scss";
 
 // GET THR RECIPE
-const { recipe } =  Astro.props;
+const { recipe } = Astro.props;
 ---
 
-<script>
-
-	// DEFINE ELEMENTS
-	const elements = {
-		cookTime: document.querySelector('.cook-time__value'),
-		ingredients: {
-			list: document.querySelector('.ingredients__list'),
-			items: document.querySelectorAll('.ingredients__list .list__item'),
-			amount: document.querySelectorAll('.ingredients__list .item__amount'),
-			controller: {
-				buttons: {
-					minus: document.querySelector('.button--minus'),
-					plus: document.querySelector('.button--plus'),
-				},
-				label: {
-					amount: document.querySelector('.label__amount'),
-					unit: document.querySelector('.label__unit'),
-				}
-			},
-		}
-	};
-
-	// DEFINE INGREDIENTS
-	const ingredients = [];
-	const getIngredients = () => {
-		const items = elements.ingredients.items;
-		items.forEach((item) => {
-			ingredients.push({
-				amount: parseInt(item.querySelector('.item__amount').textContent),
-				unit: item.querySelector('.item__unit').textContent,
-				name: item.querySelector('.item__name').textContent,
-			});
-		});
-	};
-
-	// FORMAT NUMBER
-	const formatNumber = (number) => {
-		return (Math.floor(number * 100) / 100 ).toString().replace(/\B(?=(\d{3})+(?!\d))/g, "'");
-	};
-
-	// DEFORMAT NUMBER
-	const deformatNumber = (number) => {
-		return parseInt(number.replace(/'/g, ''), 10);	
-	};
-
-	// FORMAT COOK TIME
-	const formatCookTime = () => {
-		const value = parseInt(elements.cookTime.textContent)
-		let hours = Math.floor(value / 60);
-		let remainingMinutes = value % 60;
-		let str = '';
-		if (hours > 0) { str += hours + 'h '};
-		if (remainingMinutes > 0) { str += remainingMinutes + 'min' };
-		elements.cookTime.textContent = str;
-	};
-
-	// HANDLE MINUS CLICK
-	const handleMinusClick = () => {
-		const amount = parseInt(elements.ingredients.controller.label.amount.textContent);
-		if (amount === 1) return;
-		elements.ingredients.controller.label.amount.textContent = (amount - 1).toString();
-		updateServings(amount, 'plus');
-	};
-	
-	// HANDLE PLUS CLICK
-	const handlePlusClick = () => {
-		const amount = parseInt(elements.ingredients.controller.label.amount.textContent);
-		if (amount === 20) return;
-		elements.ingredients.controller.label.amount.textContent = (amount + 1).toString();
-		updateServings(amount, 'minus');
-	};
-
-	// UPDATE SERVINGS
-	const updateServings = (amount, direction) => {
-		document.querySelectorAll('.ingredients .list__item').forEach((item) => item.remove());
-		ingredients.forEach((ingredient) => {
-			const listNode = document.createElement('li');
-			const amountNode = document.createElement('span');
-			const unitNode = document.createElement('span');
-			const nameNode = document.createElement('span');
-			listNode.classList.add('list__item', 'item');
-			amountNode.classList.add('item__amount');
-			unitNode.classList.add('item__unit');
-			nameNode.classList.add('item__name');
-			amountNode.textContent = formatNumber(ingredient.amount / 4 * ( direction === 'plus' ? amount - 1 : amount + 1 ));
-			unitNode.textContent = ingredient.unit;
-			nameNode.textContent = ingredient.name;
-			listNode.appendChild(amountNode);
-			listNode.appendChild(unitNode);
-			listNode.appendChild(nameNode);
-			elements.ingredients.list.appendChild(listNode);
-		});
-	};
-
-	// SETUP EVENTLISTENERS
-	elements.ingredients.controller.buttons.minus.addEventListener('click', handleMinusClick);
-	elements.ingredients.controller.buttons.plus.addEventListener('click', handlePlusClick);
-	window.addEventListener('DOMContentLoaded', () => {
-		formatCookTime();
-		getIngredients();
-	});
-
-</script>
+<script src="./recipe-detail.js"></script>
 
 <div class="recipe-detail">
-    <img class="recipe-detail__image" src={ recipe.data.cover } alt="Placeholder">
-		<h1 class="recipe-detail__title">{ recipe.data.title }</h1>
+    <img class="recipe-detail__image" src={recipe.data.cover} alt="Placeholder" />
+    <h1 class="recipe-detail__title">{recipe.data.title}</h1>
     <div class="recipe-detail__tags tags">
-        { recipe.data.tags.map((tag) => (
-            <p class="tags__item">{ tag }</p>
-        ))}
+        {recipe.data.tags.map((tag) => <p class="tags__item">{tag}</p>)}
     </div>
-		<p class="recipe-detail__author">a recipe by { recipe.data.author }</p>
-		<div class="recipe-detail__content conternt">
-			<div class="content__calories calories">
-				<h3 class="calories__title">Calories per serving</h3>
-				<p class="calories__value paragraph--extralarge">{ recipe.data.calories }</p>
-			</div>
-			<div class="content__cook-time cook-time">
-				<h3 class="cook-time__title">Cook Time</h3>
-				<p class="cook-time__value paragraph--extralarge">{ recipe.data.cookTime }</p>
-			</div>
-			<div class="content__ingredients ingredients">
-				<h3 class="ingredients__title">Ingredients</h3>
-				<div class="ingredients__controller controller">
-					<button class="controller__button button--minus paragraph">-</button>
-					<p class="controller__label label paragraph">
-						<span class="label__amount">{ recipe.data.servings }</span>
-						<span class="label__unit">Servings</span>
-					</p>
-					<button class="controller__button button--plus paragraph">+</button>
-				</div>
-				<ul class="ingredients__list list">
-					{ recipe.data.ingredients.map((item) => (
-						<li class="list__item item">
-							<span class="item__amount">{ item.amount }</span> 
-							<span class="item__unit">{ item.unit }</span> 
-							<span class="item__name">{ item.name }</span> 
-						</li>
-					)) }
-				</ul>
-			</div>
-			<div class="content__instructions instructions">
-				<h3 class="instructions__title">Instructions</h3>
-				<ol class="instructions__list list">
-					{ recipe.data.instructions.map((item) => (
-						<li class="list__item">{ item.description }</li>
-					))}
-				</ol>
-			</div>
-		</div>
+    <p class="recipe-detail__author">a recipe by {recipe.data.author}</p>
+    <div class="recipe-detail__content conternt">
+        <div class="content__calories calories">
+            <h3 class="calories__title">Calories per serving</h3>
+            <p class="calories__value paragraph--extralarge">{recipe.data.calories}</p>
+        </div>
+        <div class="content__cook-time cook-time">
+            <h3 class="cook-time__title">Cook Time</h3>
+            <p class="cook-time__value paragraph--extralarge">{recipe.data.cookTime}</p>
+        </div>
+        <div class="content__ingredients ingredients">
+            <h3 class="ingredients__title">Ingredients</h3>
+            <div class="ingredients__controller controller">
+                <button class="controller__button button--minus paragraph">-</button>
+                <p class="controller__label label paragraph">
+                    <span class="label__amount">{recipe.data.servings}</span>
+                    <span class="label__unit">Servings</span>
+                </p>
+                <button class="controller__button button--plus paragraph">+</button>
+            </div>
+            <ul class="ingredients__list list">
+                {
+                    recipe.data.ingredients.map((item) => (
+                        <li class="list__item item">
+                            <span class="item__amount">{item.amount}</span>
+                            <span class="item__unit">{item.unit}</span>
+                            <span class="item__name">{item.name}</span>
+                        </li>
+                    ))
+                }
+            </ul>
+        </div>
+        <div class="content__instructions instructions">
+            <h3 class="instructions__title">Instructions</h3>
+            <ol class="instructions__list list">
+                {recipe.data.instructions.map((item) => <li class="list__item">{item.description}</li>)}
+            </ol>
+        </div>
+    </div>
 </div>
