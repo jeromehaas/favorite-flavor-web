@@ -1,0 +1,156 @@
+@import '../../../styles/configs/variables.scss';
+
+.menu-overview {
+
+	&__container {
+		display: grid;
+		grid-gap: 24px;
+		grid-template-columns: repeat(4, 1fr);
+		grid-auto-rows: 200px;
+		grid-auto-flow: dense;
+	}
+
+	&__empty-note, .empty-note {
+		display: none;
+		max-width: 400px;
+		background-color: $grey;
+		padding: 24px;
+		margin: 80px auto;
+
+		&__title {
+			margin-bottom: 8px;
+		}
+
+		&__text {
+			margin-bottom: 16px;
+			line-height: 1.25;
+		}
+	}
+
+	&__item, .item {
+		min-height: 200px;
+		position: relative;
+		overflow: hidden;
+
+
+		&__heading, .heading {
+			position: absolute;
+			bottom: 24px;
+			left: 24px;
+			right: 24px;
+
+			&__inline { 
+				line-height: 1.5;
+				background-color: $white;
+				color: $black; 
+				display: inline;
+				padding: 4px 8px;
+				box-decoration-break: clone;
+				-webkit-box-decoration-break: clone;
+			}
+
+		}
+
+		&__image {
+			position: absolute;
+			top: 0;
+			right: 0;
+			object-fit: cover;
+			bottom: 0;
+			left: 0;	
+			display: block;
+			width: 100%;
+			height: 100%;
+			transition: 0.3s ease;;
+
+			&:hover {
+				transform: scale(1.1);
+			}
+			
+		}
+
+		&[data-size="big"] {
+			grid-column: span 2;
+			grid-row: span 2;
+		}
+
+		&[data-size="small"] {
+			grid-column: span 1;
+			grid-row: span 1;
+		}
+
+		&[data-size="wide"] {
+			grid-column: span 2;
+			grid-row: span 1;
+		}
+
+		&[data-size="hight"] {
+			grid-column: span 1;
+			grid-row: span 2;
+		}
+
+	}
+
+	@media(width < 900px) {
+
+		&__container {
+			grid-template-columns: repeat(3, 1fr);
+			grid-auto-rows: 160px;
+		}
+
+		&__item, .item {
+			min-height: 160px;
+		}
+
+	}
+
+	@media(width < 700px) {
+
+		&__container {
+			grid-template-columns: repeat(2, 1fr);
+		}
+
+		&__item, .item {
+
+			&[data-size="big"] {
+				grid-column: span 2;
+				grid-row: span 2;
+			}
+
+			&[data-size="small"] {
+				grid-column: span 1;
+				grid-row: span 1;
+			}
+
+			&[data-size="wide"] {
+				grid-column: span 1;
+				grid-row: span 1;
+			}
+
+			&[data-size="hight"] {
+				grid-column: span 1;
+				grid-row: span 1;
+			}
+
+		}
+
+	}
+
+	@media (width < 500px) {
+
+		&__container {
+			grid-template-columns: 1fr;
+		}
+
+		&__item, .item {
+
+			&[data-size="big"] {
+				grid-column: span 1;
+				grid-row: span 2;
+			}
+
+		}
+
+	}
+
+}

@@ -1,0 +1,51 @@
+---
+import "./cookie-banner.scss";
+---
+
+<script>
+    // IMPORTS
+    import gsap from "gsap";
+
+    // DEFINE ELEMENTS
+    const elements = {
+        cookieBanner: document.querySelector(".cookie-banner"),
+        buttons: {
+            recipe: document.querySelector(".buttons .button--dark"),
+            agree: document.querySelector(".buttons .button--light"),
+        },
+    };
+
+    // COOKIE CHECK
+    const cookieCheck = () => {
+        const cookie = localStorage.getItem("cookie");
+        if (!cookie) {
+            setTimeout(showCookieBanner, 1000);
+        }
+    };
+
+    // SHOW COOKIE-BANNER
+    const showCookieBanner = () => {
+        gsap.to(elements.cookieBanner, { bottom: "24px", duration: 2 });
+    };
+
+    // HIDE COOKIE-BANNER
+    const hideCookieBanner = () => {
+        gsap.to(elements.cookieBanner, { bottom: "-100vh", duration: 4 });
+        localStorage.setItem("cookie", "I'm just a happy cookie sitting comfy in your browser.");
+    };
+
+    // SETUP EVENT LISTENERS
+    elements.buttons.agree.addEventListener("click", hideCookieBanner);
+    window.addEventListener("DOMContentLoaded", () => {
+        cookieCheck();
+    });
+</script>
+
+<div class="cookie-banner">
+    <h3 class="cookie-banner__title">Let's talk about cookies</h3>
+    <p class="cookie-banner__text">We just collect our favorite recipes - we don’t need you to worry about cookies. But just in case, we have a marvellous recipe for choco-chip cookies.</p>
+    <div class="cookie-banner__buttons buttons">
+        <button class="buttons__item button button--light">Ok, thanks</button>
+        <a class="buttons__item button button--dark" href="/recipe">Show me the recipe!</a>
+    </div>
+</div>

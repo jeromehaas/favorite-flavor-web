@@ -1,0 +1,68 @@
+@import '../../../styles/main.scss';
+
+.footer {
+	background-color: $grey;
+
+	&__inner {
+		padding: 24px;
+		max-width: 1000px;
+		margin: 0 auto;
+
+	}
+
+	&__logo {
+		margin-bottom: 32px;
+	}
+
+	&__links, .links {
+		margin-bottom: 120px;
+
+		&__item {
+			margin-right: 40px;
+			position: relative;
+
+			&::after {
+				content: "|";
+				position: absolute; 
+				right: -24px;
+			}
+
+			&:last-child::after {
+				display: none;
+			}
+
+		}
+
+	}
+
+	&__copyright, .copyright {
+
+		&__text {
+			color: $black;
+			text-align: right;
+
+		}
+
+	}
+
+	@media (width < 400px) {
+
+		&__links, .links {
+
+			&__item {
+				margin-right: 0;
+				display: block;
+				line-height: 1.5;
+
+				&::after {
+					content: "";
+					position: absolute; 
+				}
+
+			}
+
+		}
+
+	}
+
+}

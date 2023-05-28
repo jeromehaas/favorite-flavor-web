@@ -1,0 +1,14 @@
+---
+import Page from "@components/04-layouts/page/page.astro";
+import { getCollection } from "astro:content";
+import FilterBar from "@components/03-organisms/filter-bar/filter-bar.astro";
+import MenuOverview from "@components/03-organisms/menu-overview/menu-overview.astro";
+
+const recipes = await getCollection('recipes');
+
+---
+
+<Page>
+	<FilterBar />
+	<MenuOverview recipes={ recipes } />	
+</Page>

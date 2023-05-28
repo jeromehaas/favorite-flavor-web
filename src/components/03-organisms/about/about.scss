@@ -1,0 +1,50 @@
+@import '../../../styles//configs/variables.scss';
+
+.about {
+	margin-top: 80px;
+	margin-bottom: 40px;
+	
+	&__title {
+		margin-bottom: 24px;
+	}
+	
+	&__content, .content {
+		display: flex;
+		flex-direction: row;
+		margin-bottom: 32px;
+
+		&__text {
+			line-height: 1.25;
+			width: 60%;
+			margin-right: 80px;
+		}
+	
+		&__image {
+			width: 40%;
+			background-color: $grey;
+			object-fit: cover;
+		}
+
+	}
+
+
+	@media (width < 600px) {
+		flex-direction: column;
+
+		&__content, .content {
+			flex-direction: column;
+
+			&__text {
+				width: 100%;
+				margin-bottom: 40px;
+			}
+
+			&__image {
+				width: 100%;
+			}
+			
+		}
+
+	}
+
+}

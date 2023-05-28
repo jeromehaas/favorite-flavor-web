@@ -1,0 +1,26 @@
+---
+import "./menu-overview.scss";
+const { recipes } = Astro.props;
+---
+
+<section class="menu-overview section">
+    <div class="menu-overview__inner section_inner">
+        <div class="menu-overview__container">
+            {
+                recipes.map((recipe) => (
+                    <a class="container__item item" href={`/recipes/${recipe.slug}`} data-size={recipe.data.size} data-category={recipe.data.tags}>
+                        <img class="item__image" src={recipe.data.cover} alt="Placeholder" />
+                        <p class="item__heading heading">
+                            <span class="heading__inline">{recipe.data.title}</span>
+                        </p>
+                    </a>
+                ))
+            }
+        </div>
+        <div class="menu-overview__empty-note empty-note">
+            <h2 class="empty-note__title">Sorry, we don't have a recipe with this category yet.</h2>
+            <p class="empty-note__text">Do you have one? If it's a good one please share your recipe with me!</p>
+            <a class="empty-note__button button button--dark" href="mailto:hello@jeromehaas.ch">Write me</a>
+        </div>
+    </div>
+</section>

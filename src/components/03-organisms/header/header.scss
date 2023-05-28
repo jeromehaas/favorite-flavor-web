@@ -1,0 +1,23 @@
+@import '../../../styles//configs/variables.scss';
+
+.header {
+	background-color: $white;
+    
+	&__bar {
+		max-width: 1000px;
+		margin: 0 auto;
+		padding: 24px;
+		position: fixed;
+		z-index: 5;
+		top: 0;
+		right: 0;
+		left: 0;
+		background-color: $white;
+		height: 80px;
+	}
+
+	&__placeholder {
+		height: 80px;
+	}
+
+}

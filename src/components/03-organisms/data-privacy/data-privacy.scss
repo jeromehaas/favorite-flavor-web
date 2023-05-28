@@ -1,0 +1,21 @@
+.data-privacy {
+	margin-top: 80px;
+	margin-bottom: 80px;
+
+	&__title {
+		margin-bottom: 24px;
+	}
+
+	&__content, .content {
+
+		&__item, .item {
+			margin-bottom: 16px;
+
+			&__title {
+				margin-bottom: 8px;
+			}
+		}
+	}
+
+
+}

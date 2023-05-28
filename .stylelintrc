@@ -1,0 +1,40 @@
+{
+  "extends": [
+		"stylelint-config-standard",
+		"stylelint-config-recommended-scss"
+	],
+  "rules": {
+    "indentation": "tab",
+    "color-no-invalid-hex": true,
+		"property-no-vendor-prefix": null,
+    "declaration-colon-space-before": "never",
+    "max-empty-lines": 2,
+		"selector-class-pattern": null,
+		"scss/at-function-pattern": ".*",
+    "rule-empty-line-before": ["always", {
+      "ignore": ["after-comment", "first-nested"]
+    }],
+    "selector-pseudo-class-no-unknown": [true, {
+      "ignorePseudoClasses": ["global"]
+    }],
+    "selector-pseudo-element-no-unknown": [true, {
+      "ignorePseudoElements": ["v-deep"]
+    }],
+    "selector-type-no-unknown": [true, {
+      "ignore": ["custom-elements", "default-namespace"]
+    }],
+		"value-list-comma-newline-after": null,
+		"declaration-colon-space-after": null,
+		"declaration-block-no-redundant-longhand-properties": null,
+    "string-quotes": "double",
+    "unit-no-unknown": true,
+		"selector-max-empty-lines": null,
+		"scss/no-global-function-names": null,
+    "value-list-comma-newline-before": "never-multi-line",
+    "value-list-comma-space-after": "always-single-line",
+    "value-list-comma-space-before": "never",
+		"block-no-empty": null,
+		"scss/at-import-partial-extension": null,
+		"no-descending-specificity": null
+  }
+}

@@ -1,0 +1,13 @@
+@import '../../../styles/configs/variables.scss';
+
+.page {
+	background-color: $white;
+
+	&__content {
+		max-width: 1000px;
+		margin: 0 auto;
+		padding: 0 24px 24px 24px;
+		position: relative;
+	}
+
+}

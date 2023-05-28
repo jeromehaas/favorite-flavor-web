@@ -1,0 +1,74 @@
+---
+import "./filter-bar.scss";
+---
+
+<script>
+    // IMPORTS
+    import Swiper from "swiper";
+    import SwiperCore, { Autoplay } from "swiper";
+    import gsap from "gsap";
+
+    // INIT SWIPER
+    SwiperCore.use([Autoplay]);
+
+    // CREATE SWIPER
+    const swiper = new Swiper(".filter-bar", {
+        direction: "horizontal",
+        spaceBetween: 0,
+        slidesPerView: "auto",
+        autoplay: {
+            delay: 5000,
+        },
+    });
+
+    // STOP SLIDER ON LAST SLIDE
+    swiper.on("reachEnd", (swiper) => {
+        swiper.autoplay.stop();
+    });
+
+    const elements = {
+        recipes: document.querySelectorAll(".menu-overview .container__item"),
+        filterBar: {
+            items: document.querySelectorAll(".filter-bar .filter-bar__item"),
+        },
+        emptyNote: document.querySelector(".empty-note"),
+    };
+
+    // FILTER RECIPES
+    const filterRecipes = async (category) => {
+        let totalRecipes = [...elements.recipes].reduce((accumulator, recipe) => {
+            return recipe["dataset"].category.includes(category) ? accumulator + 1 : accumulator;
+        }, 0);
+        totalRecipes <= 0 ? gsap.to(elements.emptyNote, { display: "block", delay: 1 }) : gsap.to(elements.emptyNote, { display: "none", delay: 0 });
+        await elements.recipes.forEach(async (recipe) => {
+            if (category === "All" || recipe["dataset"].category.includes(category)) {
+                await gsap.to(recipe, { display: "block" });
+            } else {
+                await gsap.to(recipe, { display: "none" });
+            }
+        });
+    };
+
+    // SETUP EVENT LISTENERS
+    elements.filterBar.items.forEach((item) => {
+        item.addEventListener("click", () => filterRecipes(item["dataset"].category));
+    });
+</script>
+
+<div class="filter-bar">
+    <div class="filter-bar__container swiper-wrapper">
+        <div class="filter-bar__item swiper-slide" data-category="All"><p class="item__text">All</p></div>
+        <div class="filter-bar__item swiper-slide" data-category="Soup"><p class="item__text">Soup</p></div>
+        <div class="filter-bar__item swiper-slide" data-category="Salad"><p class="item__text">Salad</p></div>
+        <div class="filter-bar__item swiper-slide" data-category="Cheat Meal"><p class="item__text">Cheat Meal</p></div>
+        <div class="filter-bar__item swiper-slide" data-category="Low Carb"><p class="item__text">Low Carb</p></div>
+        <div class="filter-bar__item swiper-slide" data-category="Vegan"><p class="item__text">Vegan</p></div>
+        <div class="filter-bar__item swiper-slide" data-category="Apperetizer"><p class="item__text">Apperetizer</p></div>
+        <div class="filter-bar__item swiper-slide" data-category="Dessert"><p class="item__text">Dessert</p></div>
+        <div class="filter-bar__item swiper-slide" data-category="Bread"><p class="item__text">Bread</p></div>
+        <div class="filter-bar__item swiper-slide" data-category="Italian"><p class="item__text">Italian</p></div>
+        <div class="filter-bar__item swiper-slide" data-category="Swiss"><p class="item__text">Swiss</p></div>
+        <div class="filter-bar__item swiper-slide" data-category="Favorites"><p class="item__text">Favorites</p></div>
+        <div class="filter-bar__item swiper-slide" data-category="Main"><p class="item__text">Main</p></div>
+    </div>
+</div>
