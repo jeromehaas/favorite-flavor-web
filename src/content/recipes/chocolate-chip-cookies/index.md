@@ -4,7 +4,7 @@ title: Chocolate Chip Cookies
 author: Jérôme Haas
 tags: ["Cheat Meal", "Dessert"]
 cover: "/src/content/recipes/chocolate-chip-cookies/assets/images/cover.jpg"
-size: wide
+size: small
 date: "27.05.2023"
 calories: 320
 cookTime: 20

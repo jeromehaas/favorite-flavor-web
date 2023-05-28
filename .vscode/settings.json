@@ -19,9 +19,9 @@
 	},
 
 	// ESLINT
-	"eslint.validate": [ "javascript", "javascriptreact", ".astro" ],
+	"eslint.validate": [ "javascript", ".astro", ".js"],
 	"eslint.options": {
-		"extensions": ["javascript", "astro"]
+		"extensions": ["javascript", "astro", ".js"]
 	},
 
 	// STYLELINT
@@ -38,7 +38,7 @@
 	},
 
 	//WORKBENCH
-	"workbench.colorTheme": "Andromeda",
+	"workbench.colorTheme": "Abyss",
 
 	// VIM
 	"vim.vimrc.enable": true,
@@ -54,6 +54,7 @@
 	},
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
+		// "editor.formatOnSave": true
   },
 	"[scss]": {
 		"editor.defaultFormatter": "stylelint.vscode-stylelint",

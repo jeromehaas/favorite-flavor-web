@@ -2,7 +2,8 @@
 import "./cookie-banner.scss";
 ---
 
-<script>
+<script src="./cookie-banner.js"></script>
+<!-- <script>
     // IMPORTS
     import gsap from "gsap";
 
@@ -34,18 +35,24 @@ import "./cookie-banner.scss";
         localStorage.setItem("cookie", "I'm just a happy cookie sitting comfy in your browser.");
     };
 
+    // SHOW RECIPE
+    const showRecipe = () => {
+        localStorage.setItem("cookie", "I'm just a happy cookie sitting comfy in your browser.");
+        window.location.href = "/recipes/chocolate-chip-cookies";
+    };
+
     // SETUP EVENT LISTENERS
     elements.buttons.agree.addEventListener("click", hideCookieBanner);
+    elements.buttons.recipe.addEventListener("click", showRecipe);
     window.addEventListener("DOMContentLoaded", () => {
         cookieCheck();
     });
-</script>
-
+</script> -->
 <div class="cookie-banner">
     <h3 class="cookie-banner__title">Let's talk about cookies</h3>
     <p class="cookie-banner__text">We just collect our favorite recipes - we don’t need you to worry about cookies. But just in case, we have a marvellous recipe for choco-chip cookies.</p>
     <div class="cookie-banner__buttons buttons">
         <button class="buttons__item button button--light">Ok, thanks</button>
-        <a class="buttons__item button button--dark" href="/recipe">Show me the recipe!</a>
+        <button class="buttons__item button button--dark">Show me the recipe</button>
     </div>
 </div>

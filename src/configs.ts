@@ -1,8 +1,8 @@
 export const SITE = {
-  website: "https://astro-paper.pages.dev/",
-  author: "Sat Naing",
-  desc: "A minimal, responsive and SEO-friendly Astro blog theme.",
-  title: "AstroPaper",
+  website: "https://favorite-flavor.com/",
+  author: "Jérôme Haas",
+  desc: "A developer's approach to collect, store and improve recipes.",
+  title: "favorite flavor - a recipe collection",
   ogImage: "astropaper-og.jpg",
-  postPerPage: 5,
+  postPerPage: 500,
 };
