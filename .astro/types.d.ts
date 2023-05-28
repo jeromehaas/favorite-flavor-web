@@ -97,6 +97,13 @@ declare module 'astro:content' {
   collection: "recipes",
   data: any
 } & { render(): Render[".md"] },
+"pizza/index.md": {
+  id: "pizza/index.md",
+  slug: "pizza",
+  body: string,
+  collection: "recipes",
+  data: any
+} & { render(): Render[".md"] },
 "swiss-zopf/index.md": {
   id: "swiss-zopf/index.md",
   slug: "swiss-zopf",
