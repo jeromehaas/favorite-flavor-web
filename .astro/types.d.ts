@@ -90,6 +90,13 @@ declare module 'astro:content' {
   collection: "recipes",
   data: any
 } & { render(): Render[".md"] },
+"pasta-salad/index.md": {
+  id: "pasta-salad/index.md",
+  slug: "pasta-salad",
+  body: string,
+  collection: "recipes",
+  data: any
+} & { render(): Render[".md"] },
 "pesto/index.md": {
   id: "pesto/index.md",
   slug: "italian-pesto-genovese",
